@@ -39,12 +39,15 @@ INFO = [
 ]
 # -----------------------------------------------------------------------------
 
-WIDTH, HEIGHT = 985, 450
+WIDTH = 985
+N_LINES = len(INFO) + 2  # the "stats" entry renders as 3 lines
+HEIGHT = 30 + N_LINES * 20  # top pad + rows (last row sits at its baseline)
 LEFT_X, RIGHT_X, TOP_Y, LINE_H = 15, 390, 30, 20
 INFO_COLS = 58  # characters per right-side line (dot padding target)
 
 COLS, ROWS, FRAMES, PERIOD = 40, 21, 60, 4.0
 SHADES = ".,-~:;=!*#$@"
+DONUT_Y = TOP_Y + (N_LINES - ROWS) * LINE_H // 2  # center donut vertically
 
 THEMES = {
     "dark": dict(bg="#161b22", fg="#c9d1d9", key="#ffa657", val="#a5d6ff",
@@ -91,7 +94,7 @@ def donut_svg():
         b = 4 * math.pi * f / FRAMES
         lines = donut_frame(a, b)
         tspans = "".join(
-            f'<tspan x="{LEFT_X}" y="{TOP_Y + r * LINE_H}">{line}</tspan>'
+            f'<tspan x="{LEFT_X}" y="{DONUT_Y + r * LINE_H}">{line}</tspan>'
             for r, line in enumerate(lines))
         delay = -(FRAMES - f) * step
         groups.append(f'<text class="d" style="animation-delay:{delay:.3f}s">{tspans}</text>')
