@@ -30,6 +30,8 @@ INFO = [
     ("kv", "Hobbies.Other", "trading bots, AI video"),
     ("blank",),
     ("section", "Contact"),
+    ("kv", "Email", "shryukgrandhi@gmail.com"),
+    ("kv", "LinkedIn", "linkedin.com/in/shryukgrandhi"),
     ("kv", "GitHub", "ShryukGrandhi"),
     ("blank",),
     ("section", "GitHub Stats"),
